@@ -16,8 +16,12 @@ npm run preview  # Preview production build
 
 This is a minimal React + Vite single-page app with no backend, no routing, and no state management library.
 
-- **`src/App.jsx`** — The entire application lives here: state, filtering logic, form handling, and all UI components are in one monolithic component.
+- **`src/App.jsx`** — Root component. Owns the `transactions` array state and filter state (`filterType`, `filterCategory`). Renders child components and passes props/callbacks down.
+- **`src/Summary.jsx`** — Displays total income, total expenses, and balance. Receives `transactions` and computes totals internally.
+- **`src/TransactionForm.jsx`** — Form for adding a new transaction. Owns its own local form state and calls the `onAdd` callback with the new transaction object on submit.
+- **`src/Transaction.jsx`** — Renders a single transaction row (`<tr>`) in the transactions table. Receives a `transaction` prop.
 - **`src/main.jsx`** — React entry point; mounts `<App />` to `#root`.
-- State is managed with `useState`; no persistence (data resets on reload).
 
-The app is a starter project intentionally containing bugs and poor code organization, meant to be improved as part of a course at codewithmosh.com.
+State is managed with `useState`; no persistence (data resets on reload).
+
+The app is a starter project meant to be improved as part of a course at codewithmosh.com.
